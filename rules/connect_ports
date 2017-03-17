@@ -1,0 +1,10 @@
+*filter
+-A INPUT -p tcp -m state --state NEW --dport 9000 -j ACCEPT
+-A INPUT -p udp -m state --state NEW --dport 9001 -j ACCEPT
+
+-A FORWARD -s 10.99.1.0/24 -j ACCEPT
+
+#*nat
+#-A POSTROUTING -s 10.99.1.0/24 -o venet0:0 -j MASQUERADE
+
+COMMIT
